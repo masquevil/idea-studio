@@ -1,6 +1,8 @@
 var e=`---
-category: flag
-tags: [table-games, table-game-specs]
+category: boardgame
+tags: [boardgame, boardgame-specs]
+copyright: Copyright (c) 2026 侠小然
+license: CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/)
 ---
 
 # 桌游-国家宝藏
