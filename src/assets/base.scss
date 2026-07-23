@@ -1,0 +1,20 @@
+@use './theme-dark.scss';
+
+/*** root level shared variables ***/
+:root {
+  --root-header-height: 60px;
+  --root-header-color-bg: rgba(12, 8, 12, 0.9);
+  --page-padding-horizontal: 24px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+b {
+  font-weight: bold;
+}

@@ -1,0 +1,69 @@
+// Dark theme design tokens
+// 基础色（hex）用于无交互变化的结构和文字
+// 状态色（oklch）用于有交互变化的品牌、链接、语义
+:root {
+  color-scheme: dark;
+
+  // === Base Colors (hex) ===
+  --color-white: #ffffff;
+  --color-black: #2e2e2e;
+
+  // === Backgrounds & Surfaces (hex) ===
+  --color-bg: var(--color-black);
+  --color-surface: #242424;
+  --color-surface-elevated: #121212;
+
+  // === Text (hex) ===
+  --color-heading: #ffffff;
+  --color-text: #f5f5f5;
+  --color-text-secondary: #8a8a8a;
+  --color-text-tertiary: #606060;
+  --color-text-disabled: #4a4a4a;
+
+  // === Border (hex) ===
+  --color-border: #8a8a8a;
+  --color-border-active: oklch(80% 0.12 320);
+
+  // === Placeholder (hex) ===
+  --color-placeholder: #b2b2b2;
+
+  // === Link (oklch) ===
+  --color-link: oklch(66% 0.15 280);
+  --color-link-hover: oklch(56% 0.15 280);
+  --color-link-active: oklch(46% 0.15 280);
+
+  // === Brand / Primary (oklch) ===
+  --color-primary: oklch(66% 0.18 280);
+  --color-primary-hover: oklch(56% 0.18 280);
+  --color-primary-active: oklch(46% 0.18 280);
+
+  // === Semantic Colors (oklch) ===
+  // Success
+  --color-success: oklch(65% 0.18 150);
+  --color-success-hover: oklch(55% 0.18 150);
+  --color-success-active: oklch(45% 0.18 150);
+
+  // Warning
+  --color-warning: oklch(70% 0.16 75);
+  --color-warning-hover: oklch(60% 0.16 75);
+  --color-warning-active: oklch(50% 0.16 75);
+
+  // Danger
+  --color-danger: oklch(60% 0.18 25);
+  --color-danger-hover: oklch(50% 0.18 25);
+  --color-danger-active: oklch(40% 0.18 25);
+
+  // Info
+  --color-info: oklch(60% 0.15 250);
+  --color-info-hover: oklch(50% 0.15 250);
+  --color-info-active: oklch(40% 0.15 250);
+
+  // === MD Components（临时分组，后续稳定后重新分类）===
+  --color-md-validity-tag: #9286ab;
+  --color-md-alert-bg: oklch(48% 0.08 270);
+  --color-md-alert-title-bg: oklch(60% 0.08 270);
+
+  // === Nav Components（临时分组，后续稳定后重新分类）===
+  --color-nav-text: oklch(80% 0.04 290);
+  --color-nav-bg: rgba(22, 22, 22, 0.88);
+}

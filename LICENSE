@@ -1,0 +1,26 @@
+MIT License
+
+Copyright (c) 2026 侠小然
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+---
+
+**SCOPE AND EXCLUSION:**
+
+This MIT license applies exclusively to the software source code and
+documentation files within this repository, **with the explicit exception
+of the "src/ideas/" directory and all of its subdirectories and contents**.
+
+The files located in "src/ideas/" (including but not limited to all ".md" files)
+are **NOT** covered by this MIT license. They are subject to their own
+separate copyright and licensing terms, as stated in the "LICENSE" file
+located within that directory.
