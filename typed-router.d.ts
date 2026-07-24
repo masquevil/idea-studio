@@ -45,11 +45,18 @@ declare module 'vue-router/auto-routes' {
       { path: ParamValue<false> },
       | never
     >,
-    '/[category]/[idea].[[name]]': RouteRecordInfo<
-      '/[category]/[idea].[[name]]',
-      '/:category/:idea/:name?',
-      { category: ParamValue<true>, idea: ParamValue<true>, name?: ParamValueZeroOrOne<true> },
-      { category: ParamValue<false>, idea: ParamValue<false>, name?: ParamValueZeroOrOne<false> },
+    '/[category]/[idea]/': RouteRecordInfo<
+      '/[category]/[idea]/',
+      '/:category/:idea',
+      { category: ParamValue<true>, idea: ParamValue<true> },
+      { category: ParamValue<false>, idea: ParamValue<false> },
+      | never
+    >,
+    '/[category]/[idea]/[...path]': RouteRecordInfo<
+      '/[category]/[idea]/[...path]',
+      '/:category/:idea/:path(.*)',
+      { category: ParamValue<true>, idea: ParamValue<true>, path: ParamValue<true> },
+      { category: ParamValue<false>, idea: ParamValue<false>, path: ParamValue<false> },
       | never
     >,
   }
@@ -81,14 +88,21 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | 'path'
     }
-    'src/pages/[category]/[idea].[[name]].vue': {
+    'src/pages/[category]/[idea]/index.vue': {
       routes:
-        | '/[category]/[idea].[[name]]'
+        | '/[category]/[idea]/'
       views:
         | never
       pathParamNames:
-        | 'idea'
-        | 'name'
+        | never
+    }
+    'src/pages/[category]/[idea]/[...path].vue': {
+      routes:
+        | '/[category]/[idea]/[...path]'
+      views:
+        | never
+      pathParamNames:
+        | 'path'
     }
   }
 
