@@ -245,9 +245,8 @@ onMounted(() => {
   line-height: 1.6;
   color: var(--color-text);
 
-  &:hover,
-  &:focus {
-    color: var(--color-heading);
+  &:hover {
+    color: var(--color-primary);
   }
 
   .menu-item--level-2 & {
@@ -259,7 +258,7 @@ onMounted(() => {
   }
 }
 .aside-link--active {
-  color: var(--color-primary);
+  color: var(--color-heading);
   font-weight: 600;
 }
 
