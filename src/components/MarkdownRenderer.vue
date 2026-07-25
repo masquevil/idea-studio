@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import useMdParser from '../hooks/useMdParser';
 
 interface Props {
@@ -8,14 +9,33 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {});
+const router = useRouter();
+const container = ref<HTMLElement | null>(null);
 
 const { parse } = useMdParser();
 
 const html = computed(() => parse(props.content));
+
+onMounted(() => {
+  container.value?.addEventListener('click', (e: MouseEvent) => {
+    const target = (e.target as HTMLElement).closest('a');
+    if (!target) return;
+
+    if (target.hasAttribute('data-router-link')) {
+      e.preventDefault();
+      const href = target.getAttribute('href');
+      if (href) {
+        router.push(href);
+      }
+    }
+    // target="_blank" links are handled natively by the browser
+  });
+});
 </script>
 
 <template>
   <div
+    ref="container"
     class="markdown-renderer"
     :class="{ 'theme-404': props.theme === '404' }"
     v-html="html"

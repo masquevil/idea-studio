@@ -79,7 +79,15 @@ marked.use({
     link(token: Tokens.Link) {
       const text = this.parser.parseInline(token.tokens);
       const titleAttr = token.title ? ` title="${token.title}"` : '';
-      return `<a href="${token.href}"${titleAttr} class="md-link link">${text}</a>`;
+
+      let extraAttrs = '';
+      if (/^https?:\/\//.test(token.href)) {
+        extraAttrs = ' target="_blank" rel="noopener noreferrer"';
+      } else if (token.href.startsWith('/')) {
+        extraAttrs = ' data-router-link';
+      }
+
+      return `<a href="${token.href}"${titleAttr} class="md-link link"${extraAttrs}>${text}</a>`;
     },
     table(token: Tokens.Table) {
       const alignMap: Record<string, string> = {
