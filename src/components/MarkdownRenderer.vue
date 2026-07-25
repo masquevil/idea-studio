@@ -75,9 +75,6 @@ const html = computed(() => parse(props.content));
   font-size: 16px;
   margin-bottom: 12px;
   line-height: 1.6;
-  .markdown-renderer > & {
-    text-indent: 1em;
-  }
 }
 
 .md-hr {

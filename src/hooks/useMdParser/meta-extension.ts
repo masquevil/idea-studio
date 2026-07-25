@@ -50,6 +50,15 @@ export default function createMetaExtension() {
           // Only match front matter at the very beginning of the document
           if (match && match.index === 0) {
             const [raw, yaml] = match;
+
+            // Validate: every non-empty line must match key:value format (xxx: xxx)
+            const lines = yaml.split('\n');
+            for (const line of lines) {
+              if (line.trim() && !parseYamlLine(line)) {
+                return undefined;
+              }
+            }
+
             return {
               type: 'meta',
               raw,
