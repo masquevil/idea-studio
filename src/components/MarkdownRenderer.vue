@@ -75,6 +75,9 @@ const html = computed(() => parse(props.content));
   font-size: 16px;
   margin-bottom: 12px;
   line-height: 1.6;
+  .markdown-renderer > & {
+    text-indent: 1em;
+  }
 }
 
 .md-hr {
@@ -92,6 +95,11 @@ const html = computed(() => parse(props.content));
 .md-ol {
   margin: 12px 0;
   padding-inline-start: 24px;
+
+  & .md-ul,
+  & .md-ol {
+    margin: 4px 0 8px;
+  }
 }
 
 .md-img-container {
@@ -108,6 +116,42 @@ const html = computed(() => parse(props.content));
     display: block;
     max-width: 100%;
     margin: 0 auto;
+  }
+}
+
+.md-pre {
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--color-muted-dark-5);
+  overflow-x: auto;
+}
+
+// tables
+.md-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.md-thead {
+  background-color: var(--color-muted-dark-5);
+}
+.md-th {
+  padding: 6px 8px;
+  font-weight: 600;
+  color: var(--color-title);
+  border-bottom: 2px solid var(--color-border, #ddd);
+  white-space: nowrap;
+}
+.md-td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--color-border, #ddd);
+}
+.md-tbody .md-tr {
+  &:hover {
+    background-color: var(--color-muted-dark-3);
   }
 }
 
@@ -147,6 +191,7 @@ const html = computed(() => parse(props.content));
   border-radius: 4px;
   font-size: 12px;
   line-height: 1;
+  text-indent: 0;
 }
 
 .md-alert {
@@ -177,15 +222,5 @@ const html = computed(() => parse(props.content));
       margin-bottom: 0;
     }
   }
-}
-</style>
-
-<style lang="scss">
-// 段首缩进
-.markdown-renderer > .md-p {
-  text-indent: 1em;
-}
-.md-validity-tag {
-  text-indent: 0;
 }
 </style>

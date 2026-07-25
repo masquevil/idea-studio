@@ -57,14 +57,65 @@ marked.use({
       const tag = token.ordered ? 'ol' : 'ul';
       const items = token.items
         .map((item) => {
-          const content = this.parser.parseInline(item.tokens);
+          const content = this.parser.parse(item.tokens);
           return `<li class="md-li">${content}</li>`;
         })
         .join('');
       return `<${tag} class="md-${tag}">${items}</${tag}>`;
     },
+    code(token) {
+      return (
+        `<pre class="md-pre"><code class="md-code${token.lang ? ` language-${token.lang}` : ''}">` +
+        token.text.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>').replace(/"/g, '"') +
+        `</code></pre>`
+      );
+    },
+    codespan(token) {
+      return `<code class="md-code">${token.text}</code>`;
+    },
     image(token) {
       return renderInlineImage(token);
+    },
+    link(token: Tokens.Link) {
+      const text = this.parser.parseInline(token.tokens);
+      const titleAttr = token.title ? ` title="${token.title}"` : '';
+      return `<a href="${token.href}"${titleAttr} class="md-link link">${text}</a>`;
+    },
+    table(token: Tokens.Table) {
+      const alignMap: Record<string, string> = {
+        left: 'left',
+        center: 'center',
+        right: 'right',
+        null: 'left',
+      };
+
+      const thead = token.header
+        .map((cell, i) => {
+          const align = alignMap[token.align[i] as string] || 'left';
+          const text = this.parser.parseInline(cell.tokens);
+          return `<th class="md-th" style="text-align:${align}">${text}</th>`;
+        })
+        .join('');
+
+      const tbody = token.rows
+        .map((row) => {
+          const cells = row
+            .map((cell, i) => {
+              const align = alignMap[token.align[i] as string] || 'left';
+              const text = this.parser.parseInline(cell.tokens);
+              return `<td class="md-td" style="text-align:${align}">${text}</td>`;
+            })
+            .join('');
+          return `<tr class="md-tr">${cells}</tr>`;
+        })
+        .join('');
+
+      return (
+        `<table class="md-table">` +
+        `<thead class="md-thead"><tr class="md-tr">${thead}</tr></thead>` +
+        `<tbody class="md-tbody">${tbody}</tbody>` +
+        `</table>`
+      );
     },
   },
 });

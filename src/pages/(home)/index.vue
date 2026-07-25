@@ -120,23 +120,23 @@ import { homeIdeas, categoryLabels, statusText } from '@/constants/ideas';
   opacity: 0.8;
 
   &.status-drafting {
-    --color-status-bg: oklch(36% 0.02 320);
-    --color-status-text: oklch(90% 0.02 320);
+    --color-status-text: var(--color-muted-light-4);
+    --color-status-bg: var(--color-muted-dark-5);
   }
 
   &.status-designing {
-    --color-status-bg: oklch(36% 0.12 150);
-    --color-status-text: oklch(90% 0.12 150);
+    --color-status-text: var(--color-success-light-4);
+    --color-status-bg: var(--color-success-dark-5);
   }
 
   &.status-testing {
-    --color-status-bg: oklch(36% 0.12 90);
-    --color-status-text: oklch(90% 0.12 90);
+    --color-status-text: var(--color-warning-light-4);
+    --color-status-bg: var(--color-warning-dark-5);
   }
 
   &.status-completed {
-    --color-status-bg: oklch(36% 0.06 240);
-    --color-status-text: oklch(90% 0.06 240);
+    --color-status-text: var(--color-info-light-4);
+    --color-status-bg: var(--color-info-dark-5);
   }
 }
 </style>
