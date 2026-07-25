@@ -39,6 +39,40 @@ export default defineConfig({
   },
   build: {
     assetsInlineLimit: 8192,
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            {
+              name: (chunkName) => {
+                const match = chunkName.match(/ideas[\\/]([^\\/]+)[\\/]([^\\/]+)/);
+                if (match) {
+                  return `${match[1]}-${match[2]}`;
+                }
+              },
+              test: /ideas[\\/]/,
+              priority: 100,
+            },
+            // {
+            //   name: 'vue-vendor',
+            //   test: /node_modules[\\/]vue/,
+            //   priority: 20,
+            // },
+            // {
+            //   name: 'vendor',
+            //   test: /node_modules/,
+            //   priority: 10,
+            // },
+            // {
+            //   name: 'common',
+            //   minShareCount: 2,
+            //   minSize: 10000,
+            //   priority: 5,
+            // },
+          ],
+        },
+      },
+    },
   },
 });
 
