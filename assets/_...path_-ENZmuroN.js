@@ -1,1 +1,0 @@
-import{S as e,f as t,g as n,l as r,m as i,n as a,p as o}from"./index-DDqF45Py.js";import{n as s,t as c}from"./404-C3UlFX_q.js";var l={class:`page`},u={class:`container`},d=a(i({__name:`[...path]`,setup(i){return(i,a)=>(n(),t(`main`,l,[r(`div`,u,[o(s,{content:e(c),theme:`404`},null,8,[`content`])])]))}}),[[`__scopeId`,`data-v-e2c722d6`]]);export{d as default};
