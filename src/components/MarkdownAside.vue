@@ -250,7 +250,7 @@ onMounted(() => {
   }
 
   .menu-item--level-2 & {
-    color: var(--color-nav-text);
+    color: var(--color-aside-text);
   }
 
   .menu-item--level-3 & {
@@ -267,7 +267,7 @@ onMounted(() => {
   padding: 12px 24px;
   display: flex;
   justify-content: space-between;
-  background: var(--color-nav-bg);
+  background: var(--color-aside-bg);
   color: var(--color-text);
   font-size: 14px;
   font-weight: 500;
@@ -275,7 +275,7 @@ onMounted(() => {
   cursor: pointer;
 }
 .mobile-trigger-text {
-  color: var(--color-nav-text);
+  color: var(--color-aside-text);
 }
 
 .aside-mobile-menu-container {
