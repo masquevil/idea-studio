@@ -168,7 +168,7 @@ onMounted(() => {
 }
 .md-tbody .md-tr {
   &:hover {
-    background-color: var(--color-muted-dark-3);
+    background-color: var(--color-muted-dark-5);
   }
 }
 
