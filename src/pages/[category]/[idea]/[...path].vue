@@ -13,11 +13,21 @@ const route = useRoute<'/[category]/[idea]/[...path]'>();
 const inited = ref(false);
 const doc = ref<string | null>(null);
 
+/**
+ * [...path] catch-all 路由。path 可能是 string（单段）或 string[]（多段）。
+ * 为了兼容用户 .md 后缀的链接，自动去掉尾部 .md。
+ */
+function normalizePath(rawPath: string | string[]): string {
+  const joined = Array.isArray(rawPath) ? rawPath.join('/') : rawPath;
+  return joined.replace(/\.md$/i, '');
+}
+
 watch(
   () => [route.params.category, route.params.idea, route.params.path],
   async ([category, idea, path]) => {
     if (!category || !idea || !path) return;
-    const content = await getSubDoc(category, idea, path);
+    const cleanPath = normalizePath(path);
+    const content = await getSubDoc(category, idea, cleanPath);
     doc.value = content;
     inited.value = true;
   },

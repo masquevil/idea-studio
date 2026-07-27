@@ -18,7 +18,7 @@ const router = createRouter({
         });
       }, 200);
     }
-    return false;
+    return { top: 0, left: 0 };
   },
 });
 

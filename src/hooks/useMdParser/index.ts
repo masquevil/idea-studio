@@ -1,6 +1,5 @@
 import { Marked } from 'marked';
 import type { Tokens } from 'marked';
-import { baseUrl } from 'marked-base-url';
 import createValidityTagExtension from './validity-tag-extension';
 import createClassViewExtension from './class-view-extension';
 import createAlertExtension from './alert-extension';
@@ -11,9 +10,6 @@ const marked = new Marked({
   gfm: true,
   async: false,
 });
-
-// common extensions
-marked.use(baseUrl(import.meta.env.BASE_URL));
 
 // custom extensions
 marked.use(createValidityTagExtension());
@@ -83,7 +79,7 @@ marked.use({
       let extraAttrs = '';
       if (/^https?:\/\//.test(token.href)) {
         extraAttrs = ' target="_blank" rel="noopener noreferrer"';
-      } else if (token.href.startsWith('/')) {
+      } else if (/^(\.{0,2}\/)/.test(token.href)) {
         extraAttrs = ' data-router-link';
       }
 
