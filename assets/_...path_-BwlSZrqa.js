@@ -1,0 +1,1 @@
+import{d as e,g as t,h as n,m as r,r as i,v as a,w as o}from"./index-BnY4lApZ.js";import{n as s,t as c}from"./404-CKq2FZT_.js";var l={class:`page`},u={class:`container`},d=i(t({__name:`[...path]`,setup(t){return(t,i)=>(a(),r(`main`,l,[e(`div`,u,[n(s,{content:o(c),theme:`404`},null,8,[`content`])])]))}}),[[`__scopeId`,`data-v-e2c722d6`]]);export{d as default};
