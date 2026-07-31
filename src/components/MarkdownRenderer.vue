@@ -145,10 +145,14 @@ onMounted(() => {
 }
 
 // tables
-.md-table {
+.md-table-wrapper {
   width: 100%;
-  border-collapse: collapse;
   margin: 16px 0;
+  overflow-x: auto;
+}
+.md-table {
+  min-width: 100%;
+  border-collapse: collapse;
   font-size: 14px;
   line-height: 1.6;
 }
