@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import MarkdownRenderer from '@/components/MarkdownRenderer.vue';
@@ -9,6 +9,7 @@ import { getSubDoc } from '@/utils';
 import doc404 from '@/ideas/404.md';
 
 const route = useRoute<'/[category]/[idea]/[...path]'>();
+const router = useRouter();
 
 const inited = ref(false);
 const doc = ref<string | null>(null);
@@ -25,9 +26,20 @@ function normalizePath(rawPath: string | string[]): string {
 watch(
   () => [route.params.category, route.params.idea, route.params.path],
   async ([category, idea, path]) => {
+    inited.value = true;
+    if (category && idea && !path) {
+      router.replace(`/${category}/${idea}`);
+      return;
+    }
     if (!category || !idea || !path) return;
+    inited.value = false;
+
     const cleanPath = normalizePath(path);
     const content = await getSubDoc(category, idea, cleanPath);
+    document.title = content
+      ? `${path.split('/').pop()} | ${idea} - ${category} | Idea Studio`
+      : '404 - Not Found';
+
     doc.value = content;
     inited.value = true;
   },

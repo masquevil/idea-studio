@@ -81,7 +81,8 @@ marked.use({
       let extraAttrs = '';
       if (/^https?:\/\//.test(token.href)) {
         extraAttrs = ' target="_blank" rel="noopener noreferrer"';
-      } else if (/^(\.{0,2}\/)/.test(token.href)) {
+      } else {
+        //  if (/^(\.{0,2}\/)/.test(token.href))
         extraAttrs = ' data-router-link';
       }
 

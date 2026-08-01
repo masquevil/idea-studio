@@ -18,11 +18,13 @@ const mergedContent = ref<string>('');
 watch(
   () => [route.params.category, route.params.idea],
   async ([category, idea]) => {
+    inited.value = true;
     if (!category || !idea) return;
     inited.value = false;
 
     // 1. 加载 index.md
     indexDoc.value = await getIndexDoc(category, idea);
+    document.title = indexDoc.value ? `${idea} - ${category} | Idea Studio` : '404 - Not Found';
 
     // 2. 扫描子文档，生成"相关子文档" markdown
     const tree = await getDocsTree(category, idea);
