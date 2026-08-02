@@ -19,6 +19,8 @@ marked.use(createMetaExtension());
 
 // basic renderers
 marked.use({
+  // fix del bug in marked, see https://github.com/markedjs/marked/issues/3746
+  tokenizer: { del() {} },
   renderer: {
     heading({ tokens, depth }) {
       const text = this.parser.parseInline(tokens);
@@ -79,7 +81,8 @@ marked.use({
       let extraAttrs = '';
       if (/^https?:\/\//.test(token.href)) {
         extraAttrs = ' target="_blank" rel="noopener noreferrer"';
-      } else if (/^(\.{0,2}\/)/.test(token.href)) {
+      } else {
+        //  if (/^(\.{0,2}\/)/.test(token.href))
         extraAttrs = ' data-router-link';
       }
 
@@ -115,10 +118,12 @@ marked.use({
         .join('');
 
       return (
+        `<div class="md-table-wrapper">` +
         `<table class="md-table">` +
         `<thead class="md-thead"><tr class="md-tr">${thead}</tr></thead>` +
         `<tbody class="md-tbody">${tbody}</tbody>` +
-        `</table>`
+        `</table>` +
+        `</div>`
       );
     },
   },

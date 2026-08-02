@@ -22,6 +22,7 @@ onMounted(() => {
     if (!target) return;
 
     if (target.hasAttribute('data-router-link')) {
+      if (e.ctrlKey || e.metaKey) return; // allow opening in new tab/window
       e.preventDefault();
       const href = target.getAttribute('href');
       if (href) {
@@ -145,10 +146,14 @@ onMounted(() => {
 }
 
 // tables
-.md-table {
+.md-table-wrapper {
   width: 100%;
-  border-collapse: collapse;
   margin: 16px 0;
+  overflow-x: auto;
+}
+.md-table {
+  min-width: 100%;
+  border-collapse: collapse;
   font-size: 14px;
   line-height: 1.6;
 }
@@ -165,6 +170,7 @@ onMounted(() => {
 .md-td {
   padding: 4px 6px;
   border-bottom: 1px solid var(--color-border, #ddd);
+  vertical-align: top;
 }
 .md-tbody .md-tr {
   &:hover {
