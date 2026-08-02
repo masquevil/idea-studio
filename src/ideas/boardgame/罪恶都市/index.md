@@ -9,7 +9,7 @@ license: CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 任何人数都可以开玩的非对称桌游
 
-当前进度：
+当前进度（progress-5）：
 
 | 规则书 MVP | AI 评审 | 流程监控 |
 | - | - | - |
