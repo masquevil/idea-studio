@@ -7,10 +7,11 @@ defineProps<{
   isOpen: boolean;
 }>();
 
-const emit = defineEmits<{
-  toggle: [];
-  close: [];
-}>();
+interface Emits {
+  (event: 'toggle'): void;
+  (event: 'close'): void;
+}
+const emit = defineEmits<Emits>();
 </script>
 
 <template>

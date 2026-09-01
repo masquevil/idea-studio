@@ -1,5 +1,7 @@
 import {} from 'marked';
 
+// marked 的 Tokens 是 namespace，模块增强必须用 namespace 语法（no-namespace 的合法例外）
+/* eslint-disable @typescript-eslint/no-namespace */
 // 扩展 Tokens 命名空间，添加自定义 token 类型
 declare module 'marked' {
   namespace Tokens {

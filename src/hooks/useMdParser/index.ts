@@ -20,7 +20,7 @@ marked.use(createMetaExtension());
 // basic renderers
 marked.use({
   // fix del bug in marked, see https://github.com/markedjs/marked/issues/3746
-  tokenizer: { del() {} },
+  tokenizer: { del() { return false; } },
   renderer: {
     heading({ tokens, depth }) {
       const text = this.parser.parseInline(tokens);
