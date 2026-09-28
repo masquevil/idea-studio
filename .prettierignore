@@ -1,0 +1,5 @@
+# 创意内容（src/ideas/）是资产、不是代码，许可是 CC BY-NC-ND 4.0。
+# prettier 会重排表格、并把 `~~~` 围栏改写为 ```，从而改变文档语义
+# （实测：52 个内容 Markdown 中有 44 个会被改写，含 trip 攻略里的 class-view 示例）。
+# 因此禁止对创意内容做格式化：`pnpm format` 只应作用于站点代码。
+src/ideas/
